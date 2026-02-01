@@ -1,0 +1,17 @@
+{
+    "name": "SequenceSystem.Runtime",
+    "rootNamespace": "SequenceSystem.Runtime",
+    "references": [
+        "GUID:c64fc96c9842dfc43a0a460f64745e66",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

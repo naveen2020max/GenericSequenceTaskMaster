@@ -13,8 +13,15 @@ namespace SequenceSystem.Runtime
 
         public async UniTask<TaskStatus> ExecuteAsync(IExecutionContext context)
         {
+            // Try to get the value. If it fails, return TaskStatus.Failure
+            if (!context.Blackboard.TryGet<float>(_data.BlackboardKey, out float currentVal))
+            {
+                Debug.LogError($"[Sequence] Blackboard Key '{_data.BlackboardKey}' not found. Task Failed.");
+                return TaskStatus.Failure;
+            }
+
             // 1. Get value from blackboard
-            float currentVal = context.Blackboard.Get<float>(_data.BlackboardKey);
+            //float currentVal = context.Blackboard.Get<float>(_data.BlackboardKey);
 
             // 2. Evaluate
             bool success = _data.Comparison switch

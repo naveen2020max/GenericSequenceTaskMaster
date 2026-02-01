@@ -11,6 +11,9 @@ namespace SequenceSystem.Runtime
         private readonly RuntimeRegistry _registry;
         private readonly Blackboard _blackboard;
 
+        // Event fired when the graph hits a node that results in Failure or Timeout
+        public event Action<string, TaskStatus> OnSequenceFailed;
+
         public SequenceExecutor(ProcessorFactory factory, RuntimeRegistry registry, Blackboard blackboard)
         {
             _factory = factory;
@@ -65,6 +68,13 @@ namespace SequenceSystem.Runtime
                     case TaskStatus.Aborted:
                         nextGuid = null; // Stop execution
                         break;
+                }
+
+                // When a task returns failure/timeout and there's no next node:
+                if ((result == TaskStatus.Failure || result == TaskStatus.Timeout) && string.IsNullOrEmpty(nextGuid))
+                {
+                    OnSequenceFailed?.Invoke(currentGuid, result);
+                    break;
                 }
 
                 currentGuid = nextGuid;

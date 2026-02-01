@@ -39,6 +39,23 @@ namespace SequenceSystem.Domain
             return defaultValue;
         }
 
+        public bool TryGet<T>(string key, out T value)
+        {
+            if (_data.TryGetValue(key, out var localValue))
+            {
+                value = (T)localValue;
+                return true;
+            }
+
+            if (_parent != null)
+            {
+                return _parent.TryGet(key, out value);
+            }
+
+            value = default;
+            return false;
+        }
+
         public bool HasKey(string key)
         {
             if (_data.ContainsKey(key)) return true;

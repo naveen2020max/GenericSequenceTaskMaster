@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 554866da49ceee64b9b5194d74ed7edc, type: 3}
+  m_Name: TestMoveSequence_Layout
+  m_EditorClassIdentifier: SequenceSystem.Runtime::SequenceSystem.Runtime.SequenceGraphLayoutSO
+  NodePositions:
+  - NodeGuid: 64f5681d-82d2-4b55-9f72-78895ad5e59a
+    Position: {x: 283, y: 190}
+  - NodeGuid: 4fc6da22-a750-4fd0-8662-8a3412467a32
+    Position: {x: 516, y: 219}
+  - NodeGuid: 7736474b-b34b-46f3-a871-4a13cf8c6645
+    Position: {x: 499, y: 140}

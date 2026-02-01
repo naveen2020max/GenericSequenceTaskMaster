@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6567024940210662897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b9292b47f6fccd4cb32f597a45dd45e, type: 3}
+  m_Name: MoveNodeData
+  m_EditorClassIdentifier: SequenceSystem.Runtime::SequenceSystem.Runtime.MoveNodeData
+  _guid: 28ea036f-1f16-4326-ac4f-f427904fd960
+  _useTimeout: 0
+  _timeoutDuration: 10
+  _successGuid: 
+  _failureGuid: 
+  _timeoutGuid: 
+  TargetID: Cube_01
+  TargetPosition: {x: 5, y: 0, z: 0}
+  Speed: 5
+  Tolerance: 0.1
+--- !u!114 &-3748822602580611912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b9292b47f6fccd4cb32f597a45dd45e, type: 3}
+  m_Name: MoveNodeData
+  m_EditorClassIdentifier: SequenceSystem.Runtime::SequenceSystem.Runtime.MoveNodeData
+  _guid: 64f5681d-82d2-4b55-9f72-78895ad5e59a
+  _useTimeout: 0
+  _timeoutDuration: 10
+  _successGuid: 7736474b-b34b-46f3-a871-4a13cf8c6645
+  _failureGuid: 
+  _timeoutGuid: 
+  TargetID: Cube_01
+  TargetPosition: {x: 0, y: 5, z: 0}
+  Speed: 5
+  Tolerance: 0.1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 453670e80132c1947915c1cd2de497ca, type: 3}
+  m_Name: TestMoveSequence
+  m_EditorClassIdentifier: SequenceSystem.Runtime::SequenceSystem.Runtime.SequenceGraphSO
+  _entryNodeGuid: 64f5681d-82d2-4b55-9f72-78895ad5e59a
+  _allNodes:
+  - {fileID: -3748822602580611912}
+  - {fileID: 3662155105750530203}
+  - {fileID: -6567024940210662897}
+  _editorLayout: {fileID: 11400000, guid: 297486225fd67984b86175e99ecb18e3, type: 2}
+--- !u!114 &3662155105750530203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b9292b47f6fccd4cb32f597a45dd45e, type: 3}
+  m_Name: MoveNodeData
+  m_EditorClassIdentifier: SequenceSystem.Runtime::SequenceSystem.Runtime.MoveNodeData
+  _guid: 7736474b-b34b-46f3-a871-4a13cf8c6645
+  _useTimeout: 0
+  _timeoutDuration: 10
+  _successGuid: 28ea036f-1f16-4326-ac4f-f427904fd960
+  _failureGuid: 
+  _timeoutGuid: 
+  TargetID: Cube_01
+  TargetPosition: {x: 0, y: -5, z: 0}
+  Speed: 5
+  Tolerance: 0.1

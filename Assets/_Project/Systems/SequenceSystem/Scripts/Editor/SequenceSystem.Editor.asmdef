@@ -3,7 +3,9 @@
     "rootNamespace": "SequenceSystem.Editor",
     "references": [
         "GUID:c64fc96c9842dfc43a0a460f64745e66",
-        "GUID:fd4d1ca38414af846b51db85c314b6b9"
+        "GUID:fd4d1ca38414af846b51db85c314b6b9",
+        "GUID:343deaaf83e0cee4ca978e7df0b80d21",
+        "GUID:2bafac87e7f4b9b418d9448d219b01ab"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

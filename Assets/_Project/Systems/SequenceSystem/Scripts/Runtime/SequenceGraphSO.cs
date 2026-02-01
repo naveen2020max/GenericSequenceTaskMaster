@@ -15,6 +15,8 @@ namespace SequenceSystem.Runtime
 
         public string EntryNodeGuid => _entryNodeGuid;
 
+        public List<BaseNodeData> GetAllNodes() => _allNodes;
+
         public INodeData GetNodeByGuid(string guid)
         {
             if (string.IsNullOrEmpty(guid)) return null;
@@ -35,5 +37,24 @@ namespace SequenceSystem.Runtime
 
         // Editor helper
         public void AddNode(BaseNodeData node) => _allNodes.Add(node);
+
+        public void RemoveNode(BaseNodeData node)
+        {
+            if (_allNodes.Contains(node))
+            {
+                _allNodes.Remove(node);
+            }
+        }
+
+#if UNITY_EDITOR
+        // This field only exists in the Editor. The build won't see it.
+        [SerializeField] private SequenceGraphLayoutSO _editorLayout;
+
+        public SequenceGraphLayoutSO EditorLayout
+        {
+            get => _editorLayout;
+            set => _editorLayout = value;
+        }
+#endif
     }
 }

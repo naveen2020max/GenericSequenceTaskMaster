@@ -10,6 +10,10 @@ namespace SequenceSystem.Domain
         // Cache the types to keep Reflection fast
         private readonly Dictionary<Type, Type> _typeMap = new Dictionary<Type, Type>();
 
+        public ProcessorFactory()
+        {
+            Initialize();
+        }
         public void Initialize()
         {
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();

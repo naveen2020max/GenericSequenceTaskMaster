@@ -1,5 +1,5 @@
 ﻿<Solution>
-  <Project Path="SequenceSystem.Domain.csproj" />
   <Project Path="SequenceSystem.Runtime.csproj" />
+  <Project Path="SequenceSystem.Domain.csproj" />
   <Project Path="SequenceSystem.Editor.csproj" />
 </Solution>

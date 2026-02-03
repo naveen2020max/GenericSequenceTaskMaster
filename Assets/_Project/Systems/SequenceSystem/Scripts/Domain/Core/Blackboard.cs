@@ -16,10 +16,14 @@ namespace SequenceSystem.Domain
 
         public void Set(string key, object value)
         {
-            if (HasKey(key))
+            if (_parent != null && _parent.HasKey(key))
             {
-                _data[key] = value; 
+                _parent.Set(key, value);
+                return;
             }
+
+            // 2. Otherwise, write it here (Local or Root)
+            _data[key] = value;
         }
 
         public T Get<T>(string key, T defaultValue = default)

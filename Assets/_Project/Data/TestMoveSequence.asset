@@ -1,5 +1,26 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8743814614115893922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2223791189c71594795460bdd1a9d5bd, type: 3}
+  m_Name: ComparisonNodeData
+  m_EditorClassIdentifier: SequenceSystem.Runtime::SequenceSystem.Runtime.ComparisonNodeData
+  _guid: c949bdac-9254-4d3f-aca5-3e6430f56485
+  _useTimeout: 0
+  _timeoutDuration: 10
+  _successGuid: 28ea036f-1f16-4326-ac4f-f427904fd960
+  _failureGuid: 
+  _timeoutGuid: 
+  _blackboardKey: Gold
+  _comparison: 0
+  _valueToCompare: 50
 --- !u!114 &-6567024940210662897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,6 +82,8 @@ MonoBehaviour:
   - {fileID: -3748822602580611912}
   - {fileID: 3662155105750530203}
   - {fileID: -6567024940210662897}
+  - {fileID: -8743814614115893922}
+  - {fileID: 8793501829316671702}
   _editorLayout: {fileID: 11400000, guid: 297486225fd67984b86175e99ecb18e3, type: 2}
 --- !u!114 &3662155105750530203
 MonoBehaviour:
@@ -77,10 +100,31 @@ MonoBehaviour:
   _guid: 7736474b-b34b-46f3-a871-4a13cf8c6645
   _useTimeout: 0
   _timeoutDuration: 10
-  _successGuid: 28ea036f-1f16-4326-ac4f-f427904fd960
+  _successGuid: f1577415-9b51-463f-a481-7edfac37392c
   _failureGuid: 
   _timeoutGuid: 
   TargetID: Cube_01
   TargetPosition: {x: 0, y: -5, z: 0}
   Speed: 5
   Tolerance: 0.1
+--- !u!114 &8793501829316671702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46e7362795a5b034db6ebd6f650764c2, type: 3}
+  m_Name: SetFloatNodeData
+  m_EditorClassIdentifier: SequenceSystem.Runtime::SequenceSystem.Runtime.SetFloatNodeData
+  _guid: f1577415-9b51-463f-a481-7edfac37392c
+  _useTimeout: 0
+  _timeoutDuration: 10
+  _successGuid: c949bdac-9254-4d3f-aca5-3e6430f56485
+  _failureGuid: 
+  _timeoutGuid: 
+  Key: Gold
+  Value: 100
+  Operation: 0

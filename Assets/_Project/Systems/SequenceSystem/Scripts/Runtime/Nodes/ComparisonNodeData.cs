@@ -7,7 +7,7 @@ namespace SequenceSystem.Runtime
     [CreateAssetMenu(menuName = "Sequence/Nodes/Comparison")]
     public class ComparisonNodeData : BaseNodeData
     {
-        [SerializeField] private string _blackboardKey;
+        [SerializeField] [BlackboardKey] private string _blackboardKey;
         [SerializeField] private ComparisonType _comparison;
         [SerializeField] private float _valueToCompare; // For simplicity, we'll start with floats
 

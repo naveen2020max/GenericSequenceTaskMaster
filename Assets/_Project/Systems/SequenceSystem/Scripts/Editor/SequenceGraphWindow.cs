@@ -2,6 +2,7 @@
 using SequenceSystem.Runtime;
 using UnityEditor;
 using UnityEditor.Callbacks;
+using UnityEditor.PackageManager.UI;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -25,8 +26,16 @@ namespace SequenceSystem.Editor
         // Call this to open a specific asset
         public static void OpenGraph(SequenceGraphSO graph)
         {
-            var window = GetWindow<SequenceGraphWindow>();
+            //var window = GetWindow<SequenceGraphWindow>();
+            //window.LoadGraph(graph);
+            //window.Show();
+
+            if (graph == null) return;
+
+            var window = CreateInstance<SequenceGraphWindow>();
+            window.titleContent = new GUIContent($"Sequence: {graph.name}");
             window.LoadGraph(graph);
+            window._currentGraph = graph;
             window.Show();
         }
 
@@ -37,9 +46,10 @@ namespace SequenceSystem.Editor
             var obj = EditorUtility.EntityIdToObject(instanceID);
             if (obj is SequenceGraphSO graph)
             {
-                OpenWindow();
-                var window = GetWindow<SequenceGraphWindow>();
-                window.LoadGraph(graph);
+                
+                OpenGraph(graph);
+                //var window = GetWindow<SequenceGraphWindow>();
+                //window.LoadGraph(graph);
                 return true;
             }
             return false;
@@ -49,12 +59,12 @@ namespace SequenceSystem.Editor
         {
             ConstructGraphView();
             GenerateToolbar();
-
+            if (_currentGraph) { LoadGraph(_currentGraph); Show(); }
             // 2. Selection Change Support: Listen to project clicks
-            Selection.selectionChanged += OnSelectionChanged;
+            //Selection.selectionChanged += OnSelectionChanged;
 
-            // Try to load whatever is currently selected right now
-            OnSelectionChanged();
+            //// Try to load whatever is currently selected right now
+            //OnSelectionChanged();
         }
 
         private void OnDisable()
@@ -66,14 +76,14 @@ namespace SequenceSystem.Editor
         }
 
         // 3. The Auto-Load Logic
-        private void OnSelectionChanged()
-        {
-            var obj = Selection.activeObject;
-            if (obj is SequenceGraphSO graph)
-            {
-                LoadGraph(graph);
-            }
-        }
+        //private void OnSelectionChanged()
+        //{
+        //    var obj = Selection.activeObject;
+        //    if (obj is SequenceGraphSO graph)
+        //    {
+        //        LoadGraph(graph);
+        //    }
+        //}
 
         private void ConstructGraphView()
         {
@@ -97,7 +107,14 @@ namespace SequenceSystem.Editor
             _fileNameLabel.style.marginLeft = 10;
             _fileNameLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
 
+            var graphlabel = new Label($"{_currentGraph}");
+
+            var loadgraphbtn = new Button(()=> { LoadGraph(_currentGraph); Show(); });
+            loadgraphbtn.text = "LoadGraph";
+
             toolbar.Add(_fileNameLabel);
+            toolbar.Add(graphlabel);
+            toolbar.Add(loadgraphbtn);
             rootVisualElement.Add(toolbar);
         }
 

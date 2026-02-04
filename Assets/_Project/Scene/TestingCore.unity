@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 187118148}
   - component: {fileID: 187118147}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Cube_01_01_01_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c3e7180b3c82eb40bb8c8b15d2c245e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: SequenceSystem.Runtime::SequenceSystem.Runtime.TaskIdentity
-  _uniqueId: Cube_01
+  _uniqueId: Cube_01_01_01_01
 --- !u!65 &187118149
 BoxCollider:
   m_ObjectHideFlags: 0

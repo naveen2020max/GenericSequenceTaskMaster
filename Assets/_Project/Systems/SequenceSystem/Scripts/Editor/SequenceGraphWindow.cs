@@ -11,7 +11,7 @@ namespace SequenceSystem.Editor
     public class SequenceGraphWindow : EditorWindow
     {
         private SequenceGraphView _graphView;
-        private SequenceGraphSO _currentGraph;
+        [SerializeField] private SequenceGraphSO _currentGraph;
 
         private Label _fileNameLabel; // Reference to update the UI text
 
@@ -57,9 +57,20 @@ namespace SequenceSystem.Editor
 
         private void OnEnable()
         {
+            rootVisualElement.Clear(); // important
+
             ConstructGraphView();
             GenerateToolbar();
-            if (_currentGraph) { LoadGraph(_currentGraph); Show(); }
+
+            if (_currentGraph != null)
+            {
+                // Delay to next editor tick so GraphView layout is ready
+                EditorApplication.delayCall += () =>
+                {
+                    if (this != null && _currentGraph != null)
+                        LoadGraph(_currentGraph);
+                };
+            }
             // 2. Selection Change Support: Listen to project clicks
             //Selection.selectionChanged += OnSelectionChanged;
 
@@ -121,7 +132,7 @@ namespace SequenceSystem.Editor
         public void LoadGraph(SequenceGraphSO graph)
         {
             if (graph == null) return;
-            if (_currentGraph == graph) return; // Don't reload if already open
+            //if (_currentGraph == graph) return; // Don't reload if already open
             _currentGraph = graph;
 
             // Update Toolbar Text
@@ -131,6 +142,7 @@ namespace SequenceSystem.Editor
             // 1. Ensure Layout Asset exists
             VerifyLayoutAsset(graph);
 
+            _graphView.ClearGraph();
             // 2. Tell GraphView to populate
             _graphView.PopulateView(graph);
         }

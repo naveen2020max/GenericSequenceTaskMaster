@@ -5,7 +5,7 @@ namespace SequenceSystem.Runtime
 {
     public class TaskIdentity : MonoBehaviour
     {
-        [SerializeField] private string _uniqueId;
+        [SerializeField] [RuntimeRegistryKey]private string _uniqueId;
         private RuntimeRegistry _registry;
 
         // This is the Injection point

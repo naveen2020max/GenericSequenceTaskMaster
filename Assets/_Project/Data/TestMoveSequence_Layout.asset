@@ -18,10 +18,10 @@ MonoBehaviour:
   - NodeGuid: 4fc6da22-a750-4fd0-8662-8a3412467a32
     Position: {x: 516, y: 219}
   - NodeGuid: 7736474b-b34b-46f3-a871-4a13cf8c6645
-    Position: {x: 438, y: -43}
+    Position: {x: 438, y: 141}
   - NodeGuid: 28ea036f-1f16-4326-ac4f-f427904fd960
-    Position: {x: 1053, y: -43}
+    Position: {x: 1059, y: 106}
   - NodeGuid: c949bdac-9254-4d3f-aca5-3e6430f56485
-    Position: {x: 822, y: -43}
+    Position: {x: 807, y: 121}
   - NodeGuid: f1577415-9b51-463f-a481-7edfac37392c
-    Position: {x: 616, y: -43}
+    Position: {x: 608, y: 40}

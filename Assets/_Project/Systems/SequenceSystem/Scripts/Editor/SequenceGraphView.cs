@@ -225,5 +225,10 @@ namespace SequenceSystem.Editor
             // E. Refresh View
             CreateNodeView(node);
         }
+
+        public void ClearGraph()
+        {
+            graphElements.ForEach(RemoveElement);
+        }
     }
 }

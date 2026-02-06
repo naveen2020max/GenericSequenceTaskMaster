@@ -13,12 +13,8 @@ MonoBehaviour:
   m_Name: Runtime Registry Definitions SO
   m_EditorClassIdentifier: SequenceSystem.Runtime::SequenceSystem.Runtime.RuntimeRegistryDefinitionsSO
   DefinedKeys:
-  - Object01
+  - Cube (2)
+  - Cube (3)
+  - Cube (1)
   - Cube
-  - Cube_01
-  - Cube_01 (1)
-  - Cube_01 (2)
-  - Cube_01_01
-  - Cube_01_01_01
-  - Cube_01 (2)_01
-  - Cube_01_01_01_01
+  - Cube (4)

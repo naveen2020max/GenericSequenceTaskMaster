@@ -1,0 +1,18 @@
+{
+    "name": "AMES.Editor",
+    "rootNamespace": "AMES.Editor",
+    "references": [
+        "GUID:0fdda1e22e2018945a77d5a319dcb4d1"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,5 +1,7 @@
 ﻿<Solution>
+  <Project Path="AMES.Runtime.csproj" />
   <Project Path="SequenceSystem.Runtime.csproj" />
   <Project Path="SequenceSystem.Editor.csproj" />
   <Project Path="SequenceSystem.Domain.csproj" />
+  <Project Path="AMES.Editor.csproj" />
 </Solution>

@@ -54,32 +54,63 @@ namespace AMES.Runtime
             }
         }
 
-        // --- CORE LOGIC 2: FAST-FORWARDING MULTIPLE EVENTS ---
-        public void FastForwardEvents(List<AMES_EventNode> eventsToSimulate)
+        // --- CORE LOGIC 2: HYPER-OPTIMIZED FAST-FORWARD ---
+        public void FastForwardToEvent(AMES_TimelineMap timeline, int targetEventIndex)
         {
-            // 1. Calculate the net result of all missed events into the Blackboard
-            foreach (var eventNode in eventsToSimulate)
+            if (timeline == null || targetEventIndex < 0 || targetEventIndex >= timeline.OrderedEvents.Count)
+                return;
+
+            Blackboard.Clear(); // Wipe the slate clean
+
+            int startingIndex = 0;
+
+            // 1. Find the closest Keyframe Snapshot that is BEFORE or EQUAL TO our target index
+            AMES_Snapshot closestSnapshot = null;
+            for (int i = timeline.BakedSnapshots.Count - 1; i >= 0; i--)
             {
-                foreach (var instruction in eventNode.Instructions)
+                if (timeline.BakedSnapshots[i].EventIndex <= targetEventIndex)
                 {
-                    Blackboard[instruction.AssetID] = instruction.TargetState;
+                    closestSnapshot = timeline.BakedSnapshots[i];
+                    break;
                 }
             }
 
-            // 2. Enforce the final Blackboard states onto the Scene
+            // 2. If we found a snapshot, load it instantly!
+            if (closestSnapshot != null)
+            {
+                foreach (var inst in closestSnapshot.FullBoardState)
+                {
+                    Blackboard[inst.AssetID] = inst.TargetState;
+                }
+                // Start reading deltas AFTER the snapshot
+                startingIndex = closestSnapshot.EventIndex + 1;
+            }
+
+            // 3. Calculate only the remaining Deltas (Max 9 steps)
+            for (int i = startingIndex; i <= targetEventIndex; i++)
+            {
+                AMES_EventNode node = timeline.OrderedEvents[i];
+                if (node == null) continue;
+
+                foreach (var inst in node.Instructions)
+                {
+                    Blackboard[inst.AssetID] = inst.TargetState;
+                }
+            }
+
+            // 4. Enforce the final Blackboard states onto the Scene Agents
             foreach (var kvp in Blackboard)
             {
-                string id = kvp.Key;
-                AMES_State finalState = kvp.Value;
-
-                if (ActiveAgentsMap.TryGetValue(id, out List<AMES_Agent> agents))
+                if (ActiveAgentsMap.TryGetValue(kvp.Key, out List<AMES_Agent> agents))
                 {
                     foreach (var agent in agents)
                     {
-                        agent.ApplyState(finalState);
+                        agent.ApplyState(kvp.Value);
                     }
                 }
             }
+
+            Debug.Log($"[AMES] Fast-Forwarded to Event {targetEventIndex}. Loaded Snapshot at index {((closestSnapshot != null) ? closestSnapshot.EventIndex : -1)} and calculated {targetEventIndex - startingIndex + 1} deltas.");
         }
 
         // --- CORE LOGIC 3: LATECOMERS (Objects spawned mid-game) ---
